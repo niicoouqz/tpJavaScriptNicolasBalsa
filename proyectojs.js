@@ -1,30 +1,34 @@
-alert("Bienvenido a tu simulador de notas, aca vas a saber si tu esfuerzo y trabajo durante el año tiene recompensa, o si tenes que seguir trabajando en ello, muchos exitos.")
-
-let bandera = true
-do {
-
-    let nombre = prompt("Ingrese su nombre completo")
-    let nota1 = parseFloat(prompt("Ingrese su primer nota"))
-    let nota2 = parseFloat(prompt("Ingrese su segunda nota"))
-    let nota3 = parseFloat(prompt("Ingrese su tercer nota"))
-    let nota4 = parseFloat(prompt("Ingrese su cuarta nota"))
-    let nota5 = parseFloat(prompt("Ingrese su quinta nota"))
-
-    let total = nota1 + nota2 + nota3 + nota4 + nota5
-    let promedio = total / 5
-    if (promedio == 10) {
-        console.log(`${nombre}: Felicitaciones sos un alumno/a EXTRAORDINARIO !! Su promedio es ${promedio.toFixed(2)} `)
-    } else if (promedio > 7) {
-        console.log(`${nombre}: Felicitaciones su materia fue aprobada con un puntaje alto !! Su promedio es ${promedio.toFixed(2)} `)
-    } else if (promedio >= 4) {
-        console.log(`${nombre}: Felicitaciones aprobo su materia, usted puede seguir mejorando!! Su promedio es ${promedio.toFixed(2)} `)
-    } else {
-        console.log(`${nombre} : Desaprobo la materia. Su promedio es ${promedio.toFixed(2)} `)
+function gen_table(){
+    document.getElementById("tab").innerHTML="";
+    let n=Number(document.getElementById("capital").value);
+    let n2=Number(document.getElementById("couta").value);
+    let n3=Number(document.getElementById("interes").value);
+    if(n>0){   
+        for(i=1;i<=n2;i++){
+            ca=n/n2;
+            d1=ca.toFixed(2);
+            i2=((n*n3)/100)/n2;
+            d2=i2.toFixed(2);
+            r=ca+i2;
+            d3=r.toFixed(2);
+            document.getElementById("tab").innerHTML=document.getElementById("tab").innerHTML+
+                    `<tr>
+                        <td> ${i}</td>
+                        <td> ${d1}</td>
+                        <td> ${d2}</td>
+                        <td> ${d3}</td>
+                    </tr>`;
+        }
+        n1=n.toFixed(2);
+        t_i=i2*n2;
+        d4=t_i.toFixed(2);
+        t_p=r*n2;
+        d5=t_p.toFixed(2);
+        document.getElementById("t1").innerHTML=n1;
+        document.getElementById("t2").innerHTML=d4;
+        document.getElementById("t3").innerHTML=d5;        
+    }else{
+        alert("Falta ingresar un Número");
     }
-    let pregunta = prompt(`¿Quiere ingresar otro/a alumno/a? "ESC" para no `)
-    if(pregunta.toUpperCase() == "ESC"){
-        bandera = false
-        alert("Gracias por usar nuestra plataforma!!")
-    }
-} while (bandera)
+}
 
